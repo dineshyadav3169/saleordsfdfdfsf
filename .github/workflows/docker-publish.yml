@@ -28,11 +28,11 @@ jobs:
 
       - name: Run tests
         run: |
-          https://github.com/mirumee/saleor-platform.git
+          git clone https://github.com/mirumee/saleor-platform.git
           cd saleor-platform
-          https://github.com/mirumee/saleor-dashboard.git
-          https://github.com/mirumee/saleor-storefront.git
-          https://github.com/mirumee/saleor.git
+          git clone https://github.com/mirumee/saleor-dashboard.git
+          git clone https://github.com/mirumee/saleor-storefront.git
+          git clone https://github.com/mirumee/saleor.git
           docker-compose build
           docker-compose run --rm api python3 manage.py migrate
           docker-compose run --rm api python3 manage.py collectstatic --noinput

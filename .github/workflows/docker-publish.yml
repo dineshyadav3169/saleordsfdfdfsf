@@ -28,22 +28,14 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          git clone https://github.com/mirumee/saleor-platform.git
+          git clone https://github.com/dineshyadav3169/saleordsfdfdfsf.git
           cd saleor-platform
           git clone https://github.com/mirumee/saleor-dashboard.git
           git clone https://github.com/mirumee/saleor-storefront.git
           git clone https://github.com/mirumee/saleor.git
-          
-      - name: docker buildddd
-        run: |
-         docker-compose build
-      
-      - name: docker composeeee
-        run: |
+          docker-compose build
           docker-compose run --rm api python3 manage.py migrate
           docker-compose run --rm api python3 manage.py collectstatic --noinput
-          docker-compose run --rm api python3 manage.py populatedb --createsuperuser
-          
-      - name: docker compse upppp
-        run: |
-         docker-compose up      
+          docker-compose run --rm api python3 manage.py populatedb
+          docker-compose run --rm api python3 manage.py createsuperuser
+          docker-compose up

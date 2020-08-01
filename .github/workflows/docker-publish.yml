@@ -1,0 +1,40 @@
+name: Docker
+
+on:
+  push:
+    # Publish `master` as Docker `latest` image.
+    branches:
+      - master
+
+    # Publish `v1.2.3` tags as releases.
+    tags:
+      - v*
+
+  # Run tests for any PRs.
+  pull_request:
+
+env:
+  # TODO: Change variable to your image's name.
+  IMAGE_NAME: image
+
+jobs:
+  # Run tests.
+  # See also https://docs.docker.com/docker-hub/builds/automated-testing/
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run tests
+        run: |
+          https://github.com/mirumee/saleor-platform.git
+          cd saleor-platform
+          https://github.com/mirumee/saleor-dashboard.git
+          https://github.com/mirumee/saleor-storefront.git
+          https://github.com/mirumee/saleor.git
+          docker-compose build
+          docker-compose run --rm api python3 manage.py migrate
+          docker-compose run --rm api python3 manage.py collectstatic --noinput
+          docker-compose run --rm api python3 manage.py populatedb --createsuperuser
+          docker-compose up

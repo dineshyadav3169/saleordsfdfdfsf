@@ -29,7 +29,7 @@ jobs:
       - name: Install Dependencies
         run: |
           git clone https://github.com/dineshyadav3169/saleordsfdfdfsf.git
-          cd saleor-platform
+          cd saleordsfdfdfsf
           git clone https://github.com/mirumee/saleor-dashboard.git
           git clone https://github.com/mirumee/saleor-storefront.git
           git clone https://github.com/mirumee/saleor.git

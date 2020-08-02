@@ -30,7 +30,6 @@ jobs:
         run: |
           git clone https://github.com/internetarchive/openlibrary.git
           cd openlibrary
-          docker-machine start default
           docker build -t olbase:latest -f docker/Dockerfile.olbase .
           docker-compose build web
           docker-compose build solr

@@ -28,14 +28,10 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          git clone https://github.com/dineshyadav3169/saleordsfdfdfsf.git
-          cd saleordsfdfdfsf
-          git clone https://github.com/mirumee/saleor-dashboard.git
-          git clone https://github.com/mirumee/saleor-storefront.git
-          git clone https://github.com/mirumee/saleor.git
-          docker-compose build
-          docker-compose run --rm api python3 manage.py migrate
-          docker-compose run --rm api python3 manage.py collectstatic --noinput
-          docker-compose run --rm api python3 manage.py populatedb
-          docker-compose run --rm api python3 manage.py createsuperuser
+          git clone https://github.com/internetarchive/openlibrary.git
+          cd openlibrary
+          docker-machine start default
+          docker build -t olbase:latest -f docker/Dockerfile.olbase .
+          docker-compose build web
+          docker-compose build solr
           docker-compose up

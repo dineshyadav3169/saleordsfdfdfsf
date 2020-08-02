@@ -28,9 +28,6 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          git clone https://github.com/internetarchive/openlibrary.git
-          cd openlibrary
-          docker build -t olbase:latest -f docker/Dockerfile.olbase .
-          docker-compose build web
-          docker-compose build solr
+          git clone https://github.com/dockersamples/example-voting-app.git
+          cd example-voting-app
           docker-compose up
